@@ -1,11 +1,13 @@
 import Link from "next/link";
 
 import { DashboardCard } from "@/components/dashboard-card";
+import { ProtectedRoute } from "@/components/protected-route";
 import { dashboardMetrics, recentTransactions } from "@/data/demo";
 
 export default function DashboardPage() {
   return (
-    <section className="section-shell">
+    <ProtectedRoute>
+      <section className="section-shell">
       <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
         <div>
           <p className="text-sm font-semibold tracking-[0.16em] text-primary">ACCOUNT OVERVIEW</p>
@@ -79,6 +81,7 @@ export default function DashboardPage() {
           </div>
         </div>
       </div>
-    </section>
+      </section>
+    </ProtectedRoute>
   );
 }

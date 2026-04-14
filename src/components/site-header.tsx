@@ -3,10 +3,12 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+import { useAuth } from "@/components/auth-provider";
 import { navItems } from "@/data/demo";
 
 export function SiteHeader() {
   const pathname = usePathname();
+  const { isAuthenticated, isReady, logout, userEmail } = useAuth();
 
   return (
     <header className="sticky top-0 z-20 border-b border-slate-200/80 bg-white/95 backdrop-blur">
@@ -41,8 +43,20 @@ export function SiteHeader() {
           })}
         </nav>
 
-        <div className="hidden lg:flex">
+        <div className="hidden items-center gap-3 lg:flex">
           <span className="status-pill">Demo Environment</span>
+          {isReady && isAuthenticated ? (
+            <>
+              <span className="status-pill">{userEmail}</span>
+              <button type="button" onClick={logout} className="secondary-button px-4 py-2 text-xs">
+                로그아웃
+              </button>
+            </>
+          ) : (
+            <Link href="/login" className="secondary-button px-4 py-2 text-xs">
+              로그인
+            </Link>
+          )}
         </div>
       </div>
     </header>
