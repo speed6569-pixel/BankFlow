@@ -9,16 +9,16 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: "#0E7490",
-        accent: "#22C55E",
+        primary: "#163B65",
+        accent: "#B9975B",
         ink: "#0F172A",
         mist: "#E2E8F0",
       },
       boxShadow: {
-        soft: "0 20px 45px rgba(15, 23, 42, 0.08)",
+        soft: "0 18px 40px rgba(15, 23, 42, 0.08)",
       },
       backgroundImage: {
-        glow: "radial-gradient(circle at top, rgba(14, 116, 144, 0.18), transparent 45%)",
+        glow: "radial-gradient(circle at top, rgba(22, 59, 101, 0.08), transparent 42%), linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%)",
       },
     },
   },

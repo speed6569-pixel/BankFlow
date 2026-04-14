@@ -30,10 +30,15 @@ export function TransferSimulator() {
     <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
       <form
         onSubmit={handleSubmit}
-        className="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft"
+        className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-soft"
       >
-        <p className="text-sm font-semibold text-cyan-700">안정성 평가용 구현 모듈</p>
-        <h3 className="mt-2 text-2xl font-semibold text-slate-900">이체 시뮬레이션</h3>
+        <div className="flex items-center justify-between gap-4 border-b border-slate-200 pb-5">
+          <div>
+            <p className="text-sm font-semibold text-primary">안정성 평가용 구현 모듈</p>
+            <h3 className="mt-2 text-2xl font-semibold text-slate-950">이체 시뮬레이션</h3>
+          </div>
+          <span className="status-pill">실행 가능</span>
+        </div>
 
         <div className="mt-6 space-y-4">
           <label className="block text-sm font-medium text-slate-600">
@@ -41,7 +46,7 @@ export function TransferSimulator() {
             <select
               value={fromAccount}
               onChange={(event) => setFromAccount(event.target.value)}
-              className="mt-2 w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none focus:border-cyan-700"
+              className="mt-2 w-full rounded-2xl border border-slate-300 bg-slate-50 px-4 py-3 outline-none transition focus:border-primary focus:bg-white"
             >
               {mockAccounts.map((account) => (
                 <option key={account}>{account}</option>
@@ -54,7 +59,7 @@ export function TransferSimulator() {
             <select
               value={target}
               onChange={(event) => setTarget(event.target.value)}
-              className="mt-2 w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none focus:border-cyan-700"
+              className="mt-2 w-full rounded-2xl border border-slate-300 bg-slate-50 px-4 py-3 outline-none transition focus:border-primary focus:bg-white"
             >
               {mockTargets.map((item) => (
                 <option key={item}>{item}</option>
@@ -67,22 +72,22 @@ export function TransferSimulator() {
             <input
               value={amount}
               onChange={(event) => setAmount(event.target.value.replace(/[^0-9]/g, ""))}
-              className="mt-2 w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none focus:border-cyan-700"
+              className="mt-2 w-full rounded-2xl border border-slate-300 bg-slate-50 px-4 py-3 outline-none transition focus:border-primary focus:bg-white"
             />
           </label>
         </div>
 
         <button
           type="submit"
-          className="mt-6 rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800"
+          className="primary-button mt-6"
         >
           이체 요청 생성
         </button>
       </form>
 
       <div className="space-y-6">
-        <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft">
-          <p className="text-sm font-semibold text-cyan-700">검증 포인트</p>
+        <div className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-soft">
+          <p className="text-sm font-semibold text-primary">검증 포인트</p>
           <ul className="mt-4 space-y-3 text-sm text-slate-700">
             <li>• 금액 입력 유효성 검사</li>
             <li>• 결과 메시지 즉시 표시</li>
@@ -90,8 +95,8 @@ export function TransferSimulator() {
           </ul>
         </div>
 
-        <div className="rounded-3xl border border-slate-200 bg-slate-900 p-6 text-white shadow-soft">
-          <p className="text-sm font-semibold text-cyan-300">실행 결과</p>
+        <div className="rounded-[28px] border border-slate-800 bg-slate-950 p-6 text-white shadow-soft">
+          <p className="text-sm font-semibold tracking-[0.16em] text-slate-300">실행 결과</p>
           <p className="mt-4 text-sm leading-6 text-slate-200">
             {result ?? "왼쪽 폼을 제출하면 데모 결과가 여기에 표시됩니다."}
           </p>

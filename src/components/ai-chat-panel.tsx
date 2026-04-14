@@ -72,13 +72,13 @@ export function AiChatPanel() {
 
   return (
     <div className="grid gap-6 lg:grid-cols-[1.4fr_0.8fr]">
-      <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft">
-        <div className="mb-5 flex items-center justify-between">
+      <div className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-soft">
+        <div className="mb-5 flex items-center justify-between gap-4 border-b border-slate-200 pb-5">
           <div>
-            <p className="text-sm font-semibold text-cyan-700">실제 UI 시연용 AI 기능</p>
-            <h3 className="text-2xl font-semibold text-slate-900">BankFlow AI 챗봇</h3>
+            <p className="text-sm font-semibold text-primary">실제 UI 시연용 AI 기능</p>
+            <h3 className="text-2xl font-semibold text-slate-950">BankFlow AI 상담 데스크</h3>
           </div>
-          <span className="rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">
+          <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700">
             응답 {conversationCount}건
           </span>
         </div>
@@ -87,10 +87,10 @@ export function AiChatPanel() {
           {messages.map((message, index) => (
             <div
               key={`${message.role}-${index}`}
-              className={`max-w-3xl rounded-2xl px-4 py-3 text-sm leading-6 ${
+              className={`max-w-3xl rounded-2xl border px-4 py-3 text-sm leading-6 ${
                 message.role === "assistant"
-                  ? "bg-slate-100 text-slate-700"
-                  : "ml-auto bg-slate-900 text-white"
+                  ? "border-slate-200 bg-slate-50 text-slate-700"
+                  : "ml-auto border-primary bg-primary text-white"
               }`}
             >
               {message.content}
@@ -103,11 +103,11 @@ export function AiChatPanel() {
             value={input}
             onChange={(event) => setInput(event.target.value)}
             placeholder="예: 이번 달 소비 패턴 요약해줘"
-            className="min-h-28 w-full rounded-2xl border border-slate-200 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-cyan-700"
+            className="min-h-28 w-full rounded-2xl border border-slate-300 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-primary focus:bg-white"
           />
           <button
             type="submit"
-            className="rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800"
+            className="primary-button"
           >
             AI 응답 생성
           </button>
@@ -115,15 +115,15 @@ export function AiChatPanel() {
       </div>
 
       <div className="space-y-6">
-        <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft">
-          <p className="text-sm font-semibold text-cyan-700">빠른 시연 질문</p>
+        <div className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-soft">
+          <p className="text-sm font-semibold text-primary">빠른 시연 질문</p>
           <div className="mt-4 space-y-3">
             {chatbotQuickPrompts.map((prompt) => (
               <button
                 key={prompt}
                 type="button"
                 onClick={() => applyQuickPrompt(prompt)}
-                className="w-full rounded-2xl border border-slate-200 px-4 py-3 text-left text-sm font-medium text-slate-700 transition hover:border-cyan-700 hover:text-cyan-700"
+                className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-left text-sm font-medium text-slate-700 transition hover:border-primary hover:bg-white hover:text-primary"
               >
                 {prompt}
               </button>
@@ -131,8 +131,8 @@ export function AiChatPanel() {
           </div>
         </div>
 
-        <div className="rounded-3xl border border-slate-200 bg-slate-900 p-6 text-white shadow-soft">
-          <p className="text-sm font-semibold text-cyan-300">Bedrock 설계 포인트</p>
+        <div className="rounded-[28px] border border-slate-800 bg-slate-950 p-6 text-white shadow-soft">
+          <p className="text-sm font-semibold tracking-[0.16em] text-slate-300">BEDROCK DESIGN POINTS</p>
           <ul className="mt-4 space-y-3 text-sm text-slate-200">
             <li>• Claude 또는 Titan 기반 상담 응답 생성</li>
             <li>• Lambda에서 계좌/상품 더미 데이터 결합</li>

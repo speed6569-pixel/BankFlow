@@ -7,7 +7,7 @@
 }
 
 body {
-  @apply bg-slate-50 bg-glow text-slate-900 antialiased;
+  @apply min-h-screen bg-slate-100 bg-glow text-slate-950 antialiased;
 }
 
 main {
@@ -15,15 +15,19 @@ main {
 }
 
 .section-shell {
-  @apply mx-auto max-w-7xl px-6 py-16;
+  @apply mx-auto max-w-7xl px-6 py-16 md:px-8;
 }
 
 .section-title {
-  @apply text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl;
+  @apply text-3xl font-semibold tracking-tight text-slate-950 md:text-4xl;
 }
 
 .section-copy {
   @apply mt-4 max-w-3xl text-base leading-7 text-slate-600;
+}
+
+.section-eyebrow {
+  @apply inline-flex items-center rounded-full border border-slate-300 bg-white px-4 py-2 text-xs font-semibold tracking-[0.18em] text-primary;
 }
 
 .card-grid {
@@ -31,5 +35,29 @@ main {
 }
 
 .feature-card {
-  @apply rounded-3xl border border-slate-200 bg-white p-6 shadow-soft;
+  @apply rounded-[28px] border border-slate-200 bg-white p-6 shadow-soft;
+}
+
+.surface-panel {
+  @apply rounded-[28px] border border-slate-200 bg-white p-6 shadow-soft;
+}
+
+.surface-strong {
+  @apply rounded-[32px] border border-slate-800 bg-slate-950 p-8 text-white shadow-soft;
+}
+
+.status-pill {
+  @apply inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700;
+}
+
+.primary-button {
+  @apply inline-flex items-center justify-center rounded-full bg-primary px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#102d4c];
+}
+
+.secondary-button {
+  @apply inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:text-slate-950;
+}
+
+.data-row {
+  @apply flex items-center justify-between rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4;
 }

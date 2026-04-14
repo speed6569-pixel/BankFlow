@@ -6,7 +6,7 @@ import { SiteHeader } from "@/components/site-header";
 
 export const metadata: Metadata = {
   title: "BankFlow",
-  description: "1주일 MVP 기준으로 설계한 금융/은행 서비스 데모 웹사이트",
+  description: "신뢰감 있는 디지털 뱅킹 경험을 시연하기 위한 금융 서비스 MVP 웹사이트",
 };
 
 export default function RootLayout({
@@ -20,14 +20,23 @@ export default function RootLayout({
         <SiteHeader />
         <main>{children}</main>
         <footer className="border-t border-slate-200 bg-white">
-          <div className="mx-auto flex max-w-7xl flex-col gap-3 px-6 py-6 text-sm text-slate-500 md:flex-row md:items-center md:justify-between">
-            <p>BankFlow, AWS 아키텍처와 AI 금융 상담 흐름을 시연하는 MVP</p>
-            <div className="flex gap-4">
+          <div className="mx-auto flex max-w-7xl flex-col gap-6 px-6 py-8 text-sm text-slate-500 md:px-8 lg:flex-row lg:items-end lg:justify-between">
+            <div>
+              <p className="text-xs font-semibold tracking-[0.22em] text-primary">BANKFLOW</p>
+              <p className="mt-3 max-w-xl leading-6 text-slate-600">
+                디지털 뱅킹 UX, AWS 아키텍처, AI 상담 시나리오를 하나의 흐름으로 시연하는 금융
+                서비스 MVP입니다.
+              </p>
+            </div>
+            <div className="flex gap-5">
               <Link href="/products" className="hover:text-slate-900">
                 금융상품
               </Link>
               <Link href="/ai-chat" className="hover:text-slate-900">
                 AI 챗봇
+              </Link>
+              <Link href="/transfer" className="hover:text-slate-900">
+                이체 시뮬레이션
               </Link>
             </div>
           </div>
