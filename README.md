@@ -35,6 +35,16 @@ BankFlow는 실제 금융 코어 시스템 전체를 구현하는 대신, 사용
     <td><img src="./docs/screenshots/login.png" alt="BankFlow Login" /></td>
     <td><img src="./docs/screenshots/products.png" alt="BankFlow Products" /></td>
   </tr>
+  <tr>
+    <td><b>Dashboard</b></td>
+    <td><b>AI Chat</b></td>
+    <td><b>Transfer</b></td>
+  </tr>
+  <tr>
+    <td><img src="./docs/screenshots/dashboard.png" alt="BankFlow Dashboard" /></td>
+    <td><img src="./docs/screenshots/ai-chat.png" alt="BankFlow AI Chat" /></td>
+    <td><img src="./docs/screenshots/transfer.png" alt="BankFlow Transfer" /></td>
+  </tr>
 </table>
 
 ---

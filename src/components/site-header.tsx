@@ -31,7 +31,7 @@ export function SiteHeader() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`rounded-full px-4 py-2 text-sm font-medium transition ${
+                className={`rounded-full px-4 py-2 text-sm font-medium transition whitespace-nowrap ${
                   active
                     ? "bg-primary text-white shadow-sm"
                     : "text-slate-600 hover:bg-white hover:text-slate-900"

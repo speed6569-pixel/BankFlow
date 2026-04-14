@@ -35,6 +35,16 @@ The main goals of this project are:
     <td><img src="./docs/screenshots/login.png" alt="BankFlow Login" /></td>
     <td><img src="./docs/screenshots/products.png" alt="BankFlow Products" /></td>
   </tr>
+  <tr>
+    <td><b>Dashboard</b></td>
+    <td><b>AI Chat</b></td>
+    <td><b>Transfer</b></td>
+  </tr>
+  <tr>
+    <td><img src="./docs/screenshots/dashboard.png" alt="BankFlow Dashboard" /></td>
+    <td><img src="./docs/screenshots/ai-chat.png" alt="BankFlow AI Chat" /></td>
+    <td><img src="./docs/screenshots/transfer.png" alt="BankFlow Transfer" /></td>
+  </tr>
 </table>
 
 ---
