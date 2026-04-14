@@ -1,5 +1,13 @@
 # BankFlow
 
+[한국어](./README.md) | [English](./README.en.md)
+
+![Next.js](https://img.shields.io/badge/Next.js-14-black?logo=next.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.7-3178C6?logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-06B6D4?logo=tailwindcss&logoColor=white)
+![AWS Architecture](https://img.shields.io/badge/AWS-Architecture-FF9900?logo=amazon-aws&logoColor=white)
+![Status](https://img.shields.io/badge/status-demo%20ready-0f766e)
+
 > **신뢰감 있는 디지털 뱅킹 경험을 시연하기 위한 금융 서비스 MVP**  
 > AWS 아키텍처 이해도, AI 상담 UX 설계 능력, 실행 가능한 프론트엔드 구현을 함께 보여주기 위한 프로젝트입니다.
 
@@ -11,6 +19,23 @@ BankFlow는 실제 금융 코어 시스템 전체를 구현하는 대신, 사용
 - **AWS 아키텍처 설명력 확보**: 인증, API, 데이터, AI를 분리한 구조 제시
 - **AI 리소스 활용 시연**: Amazon Bedrock 기반 금융 상담 UX 설계
 - **실행 가능한 데모 제공**: 로그인, 대시보드, 상담, 이체 흐름을 실제로 동작하게 구현
+
+---
+
+## 스크린샷
+
+<table>
+  <tr>
+    <td><b>Home</b></td>
+    <td><b>Login</b></td>
+    <td><b>Products</b></td>
+  </tr>
+  <tr>
+    <td><img src="./docs/screenshots/home.png" alt="BankFlow Home" /></td>
+    <td><img src="./docs/screenshots/login.png" alt="BankFlow Login" /></td>
+    <td><img src="./docs/screenshots/products.png" alt="BankFlow Products" /></td>
+  </tr>
+</table>
 
 ---
 
@@ -207,7 +232,8 @@ BankFlow/
 │  ├─ project-overview.md
 │  ├─ aws-architecture.md
 │  ├─ ai-features.md
-│  └─ test-report.md
+│  ├─ test-report.md
+│  └─ screenshots/
 ├─ src/
 │  ├─ app/
 │  │  ├─ ai-chat/
@@ -230,7 +256,8 @@ BankFlow/
 │     ├─ auth.ts
 │     └─ demo.ts
 ├─ package.json
-└─ README.md
+├─ README.md
+└─ README.en.md
 ```
 
 ---
@@ -295,19 +322,3 @@ npm run start
 - 모바일 화면 최적화
 - 관리자 모니터링 화면 확장
 - WAF, Guardrails, Alarm 등 운영 / 보안 구조 보강
-
----
-
-## 왜 이 README를 이렇게 구성했는가
-
-참고한 `Docker-Advanced-WebRTC-Vue` 저장소처럼, 단순 소개문이 아니라 아래를 한 번에 볼 수 있도록 정리했습니다.
-
-- 프로젝트 목적
-- 핵심 기능
-- 아키텍처 흐름
-- 사용자 동작 흐름
-- 실행 방법
-- 프로젝트 구조
-- 테스트 및 발표 포인트
-
-즉, **코드를 보기 전에도 프로젝트 전체 그림이 잡히는 README**를 목표로 구성했습니다.
