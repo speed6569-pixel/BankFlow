@@ -8,6 +8,7 @@
 
 body {
   @apply min-h-screen bg-slate-100 bg-glow text-slate-950 antialiased;
+  font-family: "Noto Sans CJK KR", "Noto Sans KR", "NanumGothic", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
 }
 
 main {
