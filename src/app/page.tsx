@@ -37,7 +37,7 @@ export default function HomePage() {
             </div>
             <div className="rounded-2xl border border-slate-200 bg-white px-5 py-4 shadow-soft">
               <p className="text-xs font-semibold tracking-[0.16em] text-slate-500">AI ADVISORY</p>
-              <p className="mt-2 text-sm text-slate-800">금융 상담 톤에 맞춘 Bedrock 연계 시나리오를 즉시 시연</p>
+              <p className="mt-2 text-sm text-slate-800">금융 상담 톤에 맞춘 Amazon Lex 연계 시나리오를 즉시 시연</p>
             </div>
           </div>
         </div>
@@ -73,7 +73,7 @@ export default function HomePage() {
             </div>
             <div className="flex items-center justify-between text-sm text-slate-300">
               <span>AI 상담 확장성</span>
-              <span>Amazon Bedrock 연계 가능</span>
+              <span>Amazon Lex 연계 가능</span>
             </div>
           </div>
         </div>

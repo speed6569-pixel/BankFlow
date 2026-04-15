@@ -14,7 +14,7 @@
 | 비즈니스 로직 | AWS Lambda | 계좌 요약, 상품 조회, AI 상담 프록시, 이체 검증 처리 |
 | 데이터 저장 | Amazon DynamoDB | 사용자 요약 정보, 거래 더미 데이터 저장 |
 | 파일 저장 | Amazon S3 | 정적 파일, 리포트, 이미지 저장 |
-| AI | Amazon Bedrock | 금융 상담 응답 생성 |
+| AI | Amazon Lex | 금융 상담 의도 분류 및 대화 흐름 처리 |
 | 모니터링 | Amazon CloudWatch | 로그 수집, 오류 추적 |
 
 ## 3. 연결 구조
@@ -28,7 +28,7 @@ flowchart LR
     G --> L[Lambda]
     L --> D[DynamoDB]
     L --> S[S3]
-    L --> B[Amazon Bedrock]
+    L --> B[Amazon Lex]
     L --> W[CloudWatch]
 ```
 
@@ -47,8 +47,8 @@ flowchart LR
 ### AI 챗봇 요청
 1. 사용자가 챗봇 페이지에서 질문 입력
 2. 프론트엔드가 API Gateway로 질문 전송
-3. Lambda가 프롬프트를 구성해 Bedrock 호출
-4. Bedrock 응답을 요약해 프론트엔드에 반환
+3. Lambda가 상담 컨텍스트를 구성해 Amazon Lex 호출
+4. Lex 응답을 정리해 프론트엔드에 반환
 5. CloudWatch에 요청 로그와 오류 기록
 
 ### 이체 시뮬레이션
@@ -67,6 +67,6 @@ flowchart LR
 ## 6. 확장 방향
 - DynamoDB 대신 Aurora Serverless 검토 가능
 - WAF 추가로 보안 구조 강화 가능
-- Bedrock Guardrails 적용으로 금융 상담 응답 안정성 강화 가능
+- Lex Intent/Slot 설계를 통해 금융 상담 흐름의 일관성 강화 가능
 - CloudWatch Alarm과 SNS로 운영 알림 확장 가능
 - 실제 거래 API 및 계좌계 시스템과 연계하는 방향으로 확장 가능

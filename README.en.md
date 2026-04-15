@@ -17,7 +17,7 @@ The main goals of this project are:
 
 - **Define a realistic MVP scope** that can be implemented within one week
 - **Demonstrate AWS architecture understanding** by separating authentication, API, data, and AI layers
-- **Show AI resource utilization** through an Amazon Bedrock-based advisory UX concept
+- **Show AI resource utilization** through an Amazon Lex-based advisory UX concept
 - **Deliver an executable demo** including login, dashboard, advisory, and transfer flows
 
 ---
@@ -81,7 +81,7 @@ The main goals of this project are:
 - Loading state while generating responses
 - Advisory type labels
 - Recommendation rationale / analysis basis display
-- Architecture explained as if integrated with Bedrock
+- Architecture explained as if integrated with Amazon Lex
 
 ### 6) Transfer Simulator
 - Input for source account, recipient, amount, and memo
@@ -114,7 +114,7 @@ If a non-authenticated user tries to access a protected page, the app redirects 
 - **State / UI**: React Client Components, localStorage-based demo session
 - **Data**: Dummy data-driven rendering
 - **Architecture**: AWS-oriented design
-- **AI**: Amazon Bedrock integration assumed, currently implemented with mock responses
+- **AI**: Amazon Lex integration assumed, currently implemented with mock responses
 
 ---
 
@@ -129,7 +129,7 @@ flowchart LR
     G --> L[Lambda]
     L --> D[DynamoDB]
     L --> S[S3]
-    L --> B[Amazon Bedrock]
+    L --> B[Amazon Lex]
     L --> W[CloudWatch]
 ```
 
@@ -142,7 +142,7 @@ flowchart LR
 - **AWS Lambda**: Business logic layer
 - **Amazon DynamoDB**: Stores dummy user and transaction data
 - **Amazon S3**: Stores static assets and reports
-- **Amazon Bedrock**: Generates AI advisory responses
+- **Amazon Lex**: Handles advisory intent classification and conversation flow
 - **Amazon CloudWatch**: Tracks logs and errors
 
 ---
@@ -165,7 +165,7 @@ sequenceDiagram
     FE-->>U: Show assets / transactions / AI briefing
     U->>FE: Ask AI question
     FE->>API: Send advisory request
-    API->>AI: Generate response assuming Bedrock integration
+    API->>AI: Generate response assuming Amazon Lex integration
     AI-->>FE: Return advisory type + recommendation rationale
     FE-->>U: Display advisory result
     U->>FE: Enter transfer information
@@ -191,7 +191,7 @@ sequenceDiagram
 1. User enters a question or clicks a quick prompt
 2. The question is classified into spending analysis, savings recommendation, loan advisory, or general guidance
 3. Advisory type and recommendation rationale are displayed together
-4. In a production structure, this can be extended via API Gateway, Lambda, and Bedrock
+4. In a production structure, this can be extended via API Gateway, Lambda, and Amazon Lex
 
 #### Transfer Simulator
 1. User enters account, recipient, amount, and memo
@@ -327,7 +327,7 @@ npm run start
 ## Future Improvements
 
 - Real Amazon Cognito integration
-- Actual Lambda + Bedrock API connection
+- Actual Lambda + Amazon Lex API connection
 - Transaction history API
 - Mobile-first UI optimization
 - Admin monitoring interface

@@ -17,9 +17,9 @@ const initialMessages: ChatMessage[] = [
   {
     role: "assistant",
     content:
-      "안녕하세요. 저는 Bedrock 연동을 가정한 BankFlow AI 상담 도우미예요. 소비 분석, 상품 추천, 대출 상담 흐름을 시연할 수 있어요.",
+      "안녕하세요. 저는 Amazon Lex 연동을 가정한 BankFlow AI 상담 도우미예요. 소비 분석, 상품 추천, 대출 상담 흐름을 시연할 수 있어요.",
     advisoryType: "상담 시작",
-    evidence: "고객 질문을 분류한 뒤, 계좌 요약과 상품 컨텍스트를 결합해 응답하는 구조를 가정합니다.",
+    evidence: "고객 질문 의도를 분류한 뒤, 계좌 요약과 상품 컨텍스트를 결합해 상담 흐름을 연결하는 구조를 가정합니다.",
   },
 ];
 
@@ -55,7 +55,7 @@ function getMockResponse(input: string) {
   if (normalized.includes("대출") || normalized.includes("소상공인")) {
     return {
       content:
-        "소상공인 브릿지 대출 상담 시나리오를 시작할게요. 1단계는 업종과 매출 규모 확인, 2단계는 필요 서류 체크리스트 제시, 3단계는 심사 예상 기간과 유의사항 안내입니다. 실제 서비스에서는 Bedrock Agent와 내부 심사 API가 연결됩니다.",
+        "소상공인 브릿지 대출 상담 시나리오를 시작할게요. 1단계는 업종과 매출 규모 확인, 2단계는 필요 서류 체크리스트 제시, 3단계는 심사 예상 기간과 유의사항 안내입니다. 실제 서비스에서는 Amazon Lex 봇과 내부 심사 API가 연결됩니다.",
       advisoryType: "대출 상담" as const,
       evidence: "업종 정보, 매출 규모, 제출 서류 확인 절차를 기준으로 상담 단계를 구성한 예시입니다.",
     };
@@ -63,9 +63,9 @@ function getMockResponse(input: string) {
 
   return {
     content:
-      "이 데모에서는 Bedrock 기반 상담 흐름을 가정하고 있어요. 소비 분석, 저축 추천, 소상공인 대출 상담 중 하나로 질문하면 가장 자연스럽게 시연할 수 있습니다.",
+      "이 데모에서는 Amazon Lex 기반 상담 흐름을 가정하고 있어요. 소비 분석, 저축 추천, 소상공인 대출 상담 중 하나로 질문하면 가장 자연스럽게 시연할 수 있습니다.",
     advisoryType: "일반 안내" as const,
-    evidence: "현재 데모는 키워드 분류 기반 응답이며, 실제 서비스에서는 Bedrock 호출 결과와 내부 데이터를 함께 사용할 수 있습니다.",
+    evidence: "현재 데모는 키워드 분류 기반 응답이며, 실제 서비스에서는 Lex 의도 분류 결과와 내부 데이터를 함께 사용할 수 있습니다.",
   };
 }
 
@@ -198,10 +198,10 @@ export function AiChatPanel() {
         </div>
 
         <div className="rounded-[28px] border border-slate-800 bg-slate-950 p-6 text-white shadow-soft">
-          <p className="text-sm font-semibold tracking-[0.16em] text-slate-300">BEDROCK DESIGN POINTS</p>
+          <p className="text-sm font-semibold tracking-[0.16em] text-slate-300">LEX DESIGN POINTS</p>
           <ul className="mt-4 space-y-3 text-sm text-slate-200">
-            <li>• Claude 또는 Titan 기반 상담 응답 생성</li>
-            <li>• Lambda에서 계좌/상품 더미 데이터 결합</li>
+            <li>• Lex 의도 분류와 슬롯 기반 상담 흐름 구성</li>
+            <li>• Lambda에서 계좌/상품 더미 데이터 결합 및 후처리</li>
             <li>• CloudWatch로 프롬프트 로그와 오류 추적</li>
           </ul>
           <div className="mt-5 rounded-2xl border border-white/10 bg-white/5 p-4 text-xs leading-6 text-slate-300">

@@ -17,7 +17,7 @@ BankFlow는 실제 금융 코어 시스템 전체를 구현하는 대신, 사용
 
 - **현실적인 MVP 범위 정의**: 1주 기준으로 구현 가능한 화면과 기능 구성
 - **AWS 아키텍처 설명력 확보**: 인증, API, 데이터, AI를 분리한 구조 제시
-- **AI 리소스 활용 시연**: Amazon Bedrock 기반 금융 상담 UX 설계
+- **AI 리소스 활용 시연**: Amazon Lex 기반 금융 상담 UX 설계
 - **실행 가능한 데모 제공**: 로그인, 대시보드, 상담, 이체 흐름을 실제로 동작하게 구현
 
 ---
@@ -81,7 +81,7 @@ BankFlow는 실제 금융 코어 시스템 전체를 구현하는 대신, 사용
 - 응답 생성 중 상태 표시
 - 상담 유형 라벨 표시
 - 추천 근거 / 분석 기준 표시
-- Bedrock 연동을 가정한 구조 설명
+- Amazon Lex 연동을 가정한 구조 설명
 
 ### 6) 이체 시뮬레이션
 - 출금 계좌, 수취인, 금액, 메모 입력
@@ -114,7 +114,7 @@ BankFlow는 실제 금융 코어 시스템 전체를 구현하는 대신, 사용
 - **State / UI**: React Client Components, localStorage 기반 데모 세션
 - **Data**: 더미 데이터 기반 렌더링
 - **Architecture**: AWS 중심 설계
-- **AI**: Amazon Bedrock 연동 가정, 현재는 모의 응답 기반 UI 구현
+- **AI**: Amazon Lex 연동 가정, 현재는 모의 응답 기반 UI 구현
 
 ---
 
@@ -129,7 +129,7 @@ flowchart LR
     G --> L[Lambda]
     L --> D[DynamoDB]
     L --> S[S3]
-    L --> B[Amazon Bedrock]
+    L --> B[Amazon Lex]
     L --> W[CloudWatch]
 ```
 
@@ -142,8 +142,48 @@ flowchart LR
 - **AWS Lambda**: 비즈니스 로직 처리
 - **Amazon DynamoDB**: 사용자 / 거래 더미 데이터 저장
 - **Amazon S3**: 정적 자산 및 리포트 저장
-- **Amazon Bedrock**: 금융 상담 응답 생성
+- **Amazon Lex**: 금융 상담 의도 분류 및 응답 흐름 처리
 - **Amazon CloudWatch**: 로그 및 오류 추적
+
+### 확장형 AWS 운영 아키텍처 참고
+
+Eye-Brow-Architect의 AWS 시스템 아키텍처에서 참고한 운영 관점 요소를 BankFlow 기준으로 정리하면 아래와 같습니다.
+
+```mermaid
+flowchart TD
+    USER[사용자 브라우저]
+    ALB[ALB or CloudFront Entry]
+
+    subgraph Public_Subnet ["Public Subnet"]
+      FE[Frontend Service]
+      NAT[NAT Gateway]
+    end
+
+    subgraph Private_Subnet ["Private Subnet"]
+      API[Backend API or Lambda Adapter]
+      DB[(Amazon DynamoDB / RDS 확장 가능)]
+    end
+
+    S3[(Amazon S3)]
+    LEX[[Amazon Lex]]
+    CW[[CloudWatch]]
+
+    USER --> ALB
+    ALB --> FE
+    FE --> API
+    API --> DB
+    API -- via NAT --> S3
+    API -- via NAT --> LEX
+    API --> CW
+```
+
+### 운영 관점에서 추가로 설명할 수 있는 포인트
+
+- **Public / Private Subnet 분리**: 사용자 트래픽을 받는 구간과 내부 비즈니스 로직 구간을 분리해 보안 설명력을 높일 수 있습니다.
+- **NAT Gateway 경유 아웃바운드 통신**: Private 영역의 애플리케이션이 Amazon Lex, S3 같은 외부 AWS 서비스와 안전하게 통신하는 구조로 확장 가능합니다.
+- **ALB 또는 CloudFront 진입 구조**: 단순 프론트 배포를 넘어서, 운영 환경에서는 경로 기반 라우팅과 트래픽 제어까지 설명할 수 있습니다.
+- **데이터 계층 확장성**: 현재는 DynamoDB 중심 설명이 자연스럽지만, 향후 거래성 데이터가 늘어나면 RDS 또는 Aurora Serverless 검토도 가능합니다.
+- **보안 및 운영성 강화**: CloudWatch 로그, 경보, WAF, IAM 권한 분리를 함께 묶어 설명하면 금융 서비스다운 운영 구조를 보여주기 좋습니다.
 
 ---
 
@@ -165,7 +205,7 @@ sequenceDiagram
     FE-->>U: 자산/거래/AI 브리핑 표시
     U->>FE: AI 질문 입력
     FE->>API: 상담 요청 전송
-    API->>AI: Bedrock 연동 가정 응답 생성
+    API->>AI: Amazon Lex 연동 가정 응답 생성
     AI-->>FE: 상담 유형 + 추천 근거 반환
     FE-->>U: AI 상담 결과 표시
     U->>FE: 이체 정보 입력
@@ -191,7 +231,7 @@ sequenceDiagram
 1. 사용자가 질문 입력 또는 빠른 질문 선택
 2. 질문 의도에 따라 소비 분석 / 저축 추천 / 대출 상담 / 일반 안내로 분기
 3. 상담 유형과 추천 근거를 함께 표시
-4. 실제 구조에서는 API Gateway, Lambda, Bedrock으로 확장 가능
+4. 실제 구조에서는 API Gateway, Lambda, Amazon Lex로 확장 가능
 
 #### 이체 시뮬레이션
 1. 계좌, 수취인, 금액, 메모 입력
@@ -327,7 +367,7 @@ npm run start
 ## 향후 개선 방향
 
 - 실제 Amazon Cognito 로그인 연동
-- Lambda + Bedrock 실제 API 연결
+- Lambda + Amazon Lex 실제 API 연결
 - 거래내역 조회 API 추가
 - 모바일 화면 최적화
 - 관리자 모니터링 화면 확장

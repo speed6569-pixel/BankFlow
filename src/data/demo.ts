@@ -80,7 +80,7 @@ export const productItems = [
   {
     name: "소상공인 브릿지 대출",
     badge: "AWS AI",
-    summary: "Bedrock 기반 상담 도우미와 연결되는 정책형 대출 상담 시나리오",
+    summary: "Amazon Lex 기반 상담 도우미와 연결되는 정책형 대출 상담 시나리오",
     features: ["질문 자동 분류", "서류 체크리스트", "심사 안내 흐름"],
   },
 ];
@@ -92,7 +92,7 @@ export const architectureNodes = [
   "Amazon Cognito",
   "Amazon DynamoDB",
   "Amazon S3",
-  "Amazon Bedrock",
+  "Amazon Lex",
   "Amazon CloudWatch",
 ];
 
